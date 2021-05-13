@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Asteroids</title>
-    <link rel="stylesheet" href="main.css">k
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
@@ -393,8 +393,8 @@
 
                 // draw the thruster
                 if (!exploding && blinkOn) {
-                    ctx.fillStyle = "red";
-                    ctx.strokeStyle = "yellow";
+                    ctx.fillStyle = "black";
+                    ctx.strokeStyle = "white";
                     ctx.lineWidth = SHIP_SIZE / 10;
                     ctx.beginPath();
                     ctx.moveTo( // rear left
@@ -440,19 +440,19 @@
                 }
             } else {
                 // draw the explosion (concentric circles of different colours)
-                ctx.fillStyle = "darkred";
+                ctx.fillStyle = "gray";
                 ctx.beginPath();
                 ctx.arc(ship.x, ship.y, ship.r * 1.7, 0, Math.PI * 2, false);
                 ctx.fill();
-                ctx.fillStyle = "red";
+                ctx.fillStyle = "white";
                 ctx.beginPath();
                 ctx.arc(ship.x, ship.y, ship.r * 1.4, 0, Math.PI * 2, false);
                 ctx.fill();
-                ctx.fillStyle = "orange";
+                ctx.fillStyle = "black";
                 ctx.beginPath();
                 ctx.arc(ship.x, ship.y, ship.r * 1.1, 0, Math.PI * 2, false);
                 ctx.fill();
-                ctx.fillStyle = "yellow";
+                ctx.fillStyle = "gray";
                 ctx.beginPath();
                 ctx.arc(ship.x, ship.y, ship.r * 0.8, 0, Math.PI * 2, false);
                 ctx.fill();
@@ -472,28 +472,28 @@
             
             // show ship's centre dot
             if (SHOW_CENTRE_DOT) {
-                ctx.fillStyle = "red";
+                ctx.fillStyle = "white  ";
                 ctx.fillRect(ship.x - 1, ship.y - 1, 2, 2);
             }
 
             // draw the lasers
             for (var i = 0; i < ship.lasers.length; i++) {
                 if (ship.lasers[i].explodeTime == 0) {
-                    ctx.fillStyle = "salmon";
+                    ctx.fillStyle = "white";
                     ctx.beginPath();
                     ctx.arc(ship.lasers[i].x, ship.lasers[i].y, SHIP_SIZE / 15, 0, Math.PI * 2, false);
                     ctx.fill();
                 } else {
                     // draw the eplosion
-                    ctx.fillStyle = "orangered";
+                    ctx.fillStyle = "white";
                     ctx.beginPath();
                     ctx.arc(ship.lasers[i].x, ship.lasers[i].y, ship.r * 0.75, 0, Math.PI * 2, false);
                     ctx.fill();
-                    ctx.fillStyle = "salmon";
+                    ctx.fillStyle = "black";
                     ctx.beginPath();
                     ctx.arc(ship.lasers[i].x, ship.lasers[i].y, ship.r * 0.5, 0, Math.PI * 2, false);
                     ctx.fill();
-                    ctx.fillStyle = "pink";
+                    ctx.fillStyle = "white";
                     ctx.beginPath();
                     ctx.arc(ship.lasers[i].x, ship.lasers[i].y, ship.r * 0.25, 0, Math.PI * 2, false);
                     ctx.fill();
@@ -505,7 +505,7 @@
                 ctx.textAlign = "center";
                 ctx.textBaseline = "middle";
                 ctx.fillStyle = "rgba(255, 255, 255, " + textAlpha + ")";
-                ctx.font = "small-caps " + TEXT_SIZE + "px dejavu sans mono";
+                ctx.font = "small-caps " + TEXT_SIZE + "px helvetica";
                 ctx.fillText(text, canv.width / 2, canv.height * 0.75);
                 textAlpha -= (1.0 / TEXT_FADE_TIME / FPS);
             } else if (ship.dead) {
@@ -524,14 +524,14 @@
             ctx.textAlign = "right";
             ctx.textBaseline = "middle";
             ctx.fillStyle = "white";
-            ctx.font = TEXT_SIZE + "px dejavu sans mono";
+            ctx.font = TEXT_SIZE + "px helvetica";
             ctx.fillText(score, canv.width - SHIP_SIZE / 2, SHIP_SIZE);
 
             // draw the high score
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.fillStyle = "white";
-            ctx.font = (TEXT_SIZE * 0.75) + "px dejavu sans mono";
+            ctx.font = (TEXT_SIZE * 0.75) + "px helvetica";
             ctx.fillText("BEST " + scoreHigh, canv.width / 2, SHIP_SIZE);
 
             // detect laser hits on asteroids
